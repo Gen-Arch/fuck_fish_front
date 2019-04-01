@@ -17,11 +17,11 @@ export default {
     };
   },
   mounted() {
-    Axios.get('elastic/search')
+    Axios.post('/graphql', {
+        query: '{ diary(limit: 100) { title name text }}'
+        })
     .then((response) => {
-        // console.log(response.data.hits.hits.map(v=>v._source));
-        console.log(this.contents)
-        this.contents = response.data.hits.hits.map(v=>v._source);
+				this.contents = response.data.data.diary;
     })
     .catch((error) => {
         console.log('ERROR!! occurred in Backend.')
@@ -29,6 +29,7 @@ export default {
     });
   }
 };
+
 </script>
 
 <style lang="scss" scoped>
