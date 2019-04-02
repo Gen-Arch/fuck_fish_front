@@ -3,6 +3,8 @@
         <div class="card" v-for="(item, index) in contents" :key="index">
             <div class="card-title">{{item.title}}</div>
             <div class="card-body">{{ item.text }}</div>
+            <div class="card-name">{{ item.name }}</div>
+            <div class="card-tags">{{ item.tags }}</div>
         </div>
     </div>
 </template>
@@ -18,7 +20,16 @@ export default {
   },
   mounted() {
     Axios.post('/graphql', {
-        query: '{ diary(limit: 100) { title name text }}'
+        query: `
+          {
+            diary {
+              title
+              name
+              text
+              tags
+            }
+          }
+        `
         })
     .then((response) => {
 				this.contents = response.data.data.diary;
