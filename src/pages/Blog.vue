@@ -7,7 +7,7 @@
       <div id="menu">
         <div class="acc">
           <label for="label1">日記</label>
-          <input type="checkbox" id="label1" class="acc_title">
+          <input type="checkbox" :checked="true" id="label1" class="acc_title">
           <div class="acc_content">
             <ul>
               <li>
@@ -21,7 +21,7 @@
         </div>
         <div class="acc">
           <label for="label2" class="acc">ツール各種</label>
-          <input type="checkbox" id="label2" class="acc_title">
+          <input type="checkbox" :checked="true" id="label2" class="acc_title">
           <div class="acc_content">
             <ul>
               <li>潮時表</li>
